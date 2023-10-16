@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uwp-mvvm", "uwp-mvvm\uwp-mv
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目", "ソリューション項目", "{49E7C338-A2E9-40AA-AB59-EBCCA640AB5C}"
 	ProjectSection(SolutionItems) = preProject
-		READ.md = READ.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
