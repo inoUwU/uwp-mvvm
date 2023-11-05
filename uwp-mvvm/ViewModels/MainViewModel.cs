@@ -1,3 +1,6 @@
+using System.Windows.Input;
+using Windows.Services.Maps;
+
 namespace uwp_mvvm.viewmodels
 {
     class MainViewModel : MainViewModelBase
@@ -63,6 +66,7 @@ namespace uwp_mvvm.viewmodels
                 if (_isAddChecked != value)
                 {
                     _isAddChecked = value;
+                    IsAnyRadioBtnCheck = true;
                     OnPropertyChanged(nameof(IsAddChecked));
                 }
             }
@@ -76,6 +80,7 @@ namespace uwp_mvvm.viewmodels
                 if (_isSubChecked != value)
                 {
                     _isSubChecked = value;
+                    IsAnyRadioBtnCheck = true;
                     OnPropertyChanged(nameof(IsSubChecked));
                 }
             }
@@ -89,6 +94,7 @@ namespace uwp_mvvm.viewmodels
                 if (_isMulChecked != value)
                 {
                     _isMulChecked = value;
+                    IsAnyRadioBtnCheck = true;
                     OnPropertyChanged(nameof(IsMulChecked));
                 }
             }
@@ -102,8 +108,42 @@ namespace uwp_mvvm.viewmodels
                 if (_isDivChecked != value)
                 {
                     _isDivChecked = value;
+                    IsAnyRadioBtnCheck = true;
                     OnPropertyChanged(nameof(IsDivChecked));
                 }
+            }
+        }
+
+        public ICommand OkButtonClicked
+        {
+            get
+            {
+                return new DelegateCommand(FindResult);
+            }
+        }
+
+        public void FindResult()
+        {
+            _calculator = new Calculator(Value1, Value2);
+
+            if (IsAddChecked)
+            {
+                Result = _calculator.Add();
+            }
+
+            if (IsSubChecked)
+            {
+                Result = _calculator.Sub();
+            }
+
+            if (IsMulChecked)
+            {
+                Result = _calculator.Mul();
+            }
+
+            if (IsDivChecked)
+            {
+                Result = _calculator.Div();
             }
         }
     }
